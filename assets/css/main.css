@@ -680,13 +680,13 @@ section,
 
 .hero h2 {
   margin: 0;
-  font-size: 64px;
+  font-size: 75px;
   font-weight: 700;
 }
 
 .hero p {
   margin: 5px 0 0 0;
-  font-size: 26px;
+  font-size: 35px;
 }
 
 .hero p span {
