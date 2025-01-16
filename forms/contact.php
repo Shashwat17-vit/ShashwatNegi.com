@@ -1,41 +1,44 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'negi3@wisc.edu';
+require 'vendor/autoload.php'; // Include PHPMailer's autoload file
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+// Collect form data
+$name = $_POST['name'];
+$email = $_POST['email'];
+$subject = $_POST['subject'];
+$message = $_POST['message'];
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+// Create a new PHPMailer instance
+$mail = new PHPMailer(true);
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+try {
+    // Server settings
+    $mail->isSMTP();                                            // Use SMTP
+    $mail->Host       = 'smtp.gmail.com';                       // Set SMTP server
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->Username   = 'shash14negi@gmail.com';                 // Your email
+    $mail->Password   = 'jile picy kmto emmo';  // Your email password or app password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Encryption type
+    $mail->Port       = 587;                                   // SMTP port
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+    // Recipients
+    $mail->setFrom($email, $name);                             // Sender
+    $mail->addAddress('Negi3@wisc.edu');          // Add recipient
 
-  echo $contact->send();
+    // Content
+    $mail->isHTML(true);                                       // Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = "<h3>You have received a new message:</h3>
+                      <p><strong>Name:</strong> $name</p>
+                      <p><strong>Email:</strong> $email</p>
+                      <p><strong>Message:</strong><br>$message</p>";
+
+    // Send email
+    $mail->send();
+    echo 'Thank you. Message has been sent successfully!';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 ?>
