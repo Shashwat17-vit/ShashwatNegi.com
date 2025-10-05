@@ -462,14 +462,14 @@
           </div>
         </div>
 
-        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="300">
+        <form class="contact-form-simple" data-aos="fade-up" data-aos-delay="300">
           <div class="row gy-4">
 
             <div class="col-md-6">
               <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
             </div>
 
-            <div class="col-md-6 ">
+            <div class="col-md-6">
               <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
             </div>
 
@@ -529,6 +529,12 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- Contact Form Script -->
+  <script src="assets/js/contact-form-simple.js"></script>
 
 </body>
 

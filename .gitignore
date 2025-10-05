@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Build output
+assets/js/contact-form.bundle.js
+assets/js/contact-form.bundle.js.map
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables (if you add any)
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
