@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  portfolio-website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: shashwat-portfolio
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+
+networks:
+  portfolio-network:
+    driver: bridge
