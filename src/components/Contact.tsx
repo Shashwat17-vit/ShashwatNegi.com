@@ -12,14 +12,19 @@ interface FormState {
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
-/**
- * Email backend placeholder — wire up your preferred service here.
- * Replace this function with Resend, SendGrid, AWS SES, Nodemailer, etc.
- */
-async function sendEmail(_data: FormState): Promise<void> {
-  // TODO: implement email backend
-  // Example: await fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
-  throw new Error('Email backend not yet configured.');
+const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3001';
+
+async function sendEmail(data: FormState): Promise<void> {
+  const res = await fetch(`${API_URL}/api/contact`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    const json = await res.json().catch(() => ({}));
+    throw new Error((json as { error?: string }).error ?? 'Failed to send message.');
+  }
 }
 
 const contactInfo = [
