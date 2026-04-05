@@ -8,8 +8,6 @@ const app = express();
 const PORT = process.env.PORT ?? 3001;
 
 // ── CORS ─────────────────────────────────────────────────────────────────────
-const isDev = process.env.NODE_ENV !== 'production';
-
 const allowedOrigins = (process.env.ALLOWED_ORIGINS ?? '')
   .split(',')
   .map((o) => o.trim())
@@ -21,8 +19,8 @@ app.use(
       // No origin = curl / Postman / server-to-server — always allow
       if (!origin) return callback(null, true);
 
-      // In development, allow any localhost origin regardless of port
-      if (isDev && /^http:\/\/localhost(:\d+)?$/.test(origin)) {
+      // Allow any localhost origin regardless of port (dev + local Docker)
+      if (/^http:\/\/localhost(:\d+)?$/.test(origin)) {
         return callback(null, true);
       }
 
