@@ -56,7 +56,7 @@ export default function Footer() {
           © {currentYear} Shashwat Negi. Deployed on AWS &amp; GCP.
         </p>
         <p className="footer-built">
-          Built with React + TypeScript + Framer Motion
+          Built with React + TypeScript + Node.js (Express).
         </p>
       </div>
     </footer>

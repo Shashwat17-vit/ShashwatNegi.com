@@ -79,7 +79,7 @@ export default function About() {
 
             <div className="about-actions">
               <a
-                href="/assets/Resume_Shashwat_Negi_FullTime_DS_2026.pdf"
+                href="/assets/Shashwats_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"

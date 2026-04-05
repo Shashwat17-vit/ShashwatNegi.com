@@ -20,7 +20,7 @@ export const projects: Project[] = [
     description: 'AI-powered environmental impact analysis application',
     longDescription:
       'An end-to-end AI application for environmental impact analysis powered by a fine-tuned Llama 3 8B model with LoRA adapters. Uses LangChain for orchestration, Sentence-BERT + Pinecone for semantic retrieval, and Streamlit for the interactive UI. Containerized with Docker for reproducible deployment.',
-    image: '/assets/img/portfolio/InsightMate.ai Proj1.png',
+    image: '/assets/img/portfolio/insightmate_query_about_me1.jpg',
     category: 'software',
     tags: ['Python', 'Llama 3 8B', 'LoRA', 'LangChain', 'Sentence-BERT', 'Pinecone', 'Streamlit', 'Docker'],
     githubUrl: 'https://github.com/Shashwat17-vit/InsightMate.ai',

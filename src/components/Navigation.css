@@ -29,18 +29,23 @@
   gap: 32px;
 }
 
-/* Logo — text only */
+/* Logo — always light so it's readable over the dark hero photo */
 .nav-logo {
   font-family: var(--font-heading);
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--text-primary);
+  color: #f2ede4;
   text-decoration: none;
   flex-shrink: 0;
   transition: color 200ms ease;
 }
 .nav-logo:hover { color: var(--accent); }
+
+/* Once scrolled, switch to dark text on the cream background */
+.nav-header--scrolled .nav-logo {
+  color: var(--text-primary);
+}
 
 /* Desktop nav links */
 .nav-links {
@@ -54,7 +59,7 @@
   font-family: var(--font-heading);
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: rgba(242, 237, 228, 0.7);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   padding: 6px 12px;
@@ -64,6 +69,15 @@
   white-space: nowrap;
 }
 .nav-link:hover {
+  color: #f2ede4;
+  background: rgba(242, 237, 228, 0.08);
+}
+
+/* Scrolled — switch to dark text on cream nav */
+.nav-header--scrolled .nav-link {
+  color: var(--text-secondary);
+}
+.nav-header--scrolled .nav-link:hover {
   color: var(--text-primary);
   background: var(--border-light);
 }
@@ -82,12 +96,20 @@
   justify-content: center;
   width: 34px;
   height: 34px;
-  color: var(--text-secondary);
+  color: rgba(242, 237, 228, 0.7);
   font-size: 17px;
   border-radius: 2px;
   transition: color 200ms ease, background 200ms ease;
 }
 .nav-social a:hover {
+  color: var(--accent);
+  background: rgba(196, 151, 90, 0.12);
+}
+
+.nav-header--scrolled .nav-social a {
+  color: var(--text-secondary);
+}
+.nav-header--scrolled .nav-social a:hover {
   color: var(--accent);
   background: var(--accent-dim);
 }
